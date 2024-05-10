@@ -13,7 +13,8 @@ const Navbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -28,6 +29,9 @@ const Navbar = () => {
             >
               <li>
                 <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/allFoods">All Foods</Link>
               </li>
               <li>
                 <a>Parent</a>
@@ -50,7 +54,10 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-            <Link to="/">Home</Link>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/allFoods">All Foods</Link>
             </li>
             <li>
               <details>
@@ -72,7 +79,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <a className="btn px-8 bg-yellow-200 border-none text-black">Login</a>
-          <a className="btn px-8 ml-4 bg-yellow-200 border-none text-black">Register</a>
+          <a className="btn px-8 ml-4 bg-yellow-200 border-none text-black">
+            Register
+          </a>
         </div>
       </div>
     </div>
