@@ -13,8 +13,7 @@ const Navbar = () => {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -25,14 +24,16 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-orange-500 rounded-box w-52"
-            >
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-orange-500 rounded-box w-52">
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/allFoods">All Foods</Link>
               </li>
+              <li>
+              <Link to="/gallery">Gallery</Link>
+            </li>
               <li>
                 <a>Parent</a>
                 <ul className="p-2">
@@ -60,6 +61,9 @@ const Navbar = () => {
               <Link to="/allFoods">All Foods</Link>
             </li>
             <li>
+              <Link to="/gallery">Gallery</Link>
+            </li>
+            <li>
               <details>
                 <summary>Parent</summary>
                 <ul className="p-2 bg-orange-500">
@@ -78,8 +82,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn px-8 bg-yellow-200 border-none text-black">Login</a>
-          <a className="btn px-8 ml-4 bg-yellow-200 border-none text-black">
+          <a className="btn px-8 bg-[#FBBF77] border-none text-white">Login</a>
+          <a className="btn px-8 ml-4 bg-[#B7410e] border-none text-white">
             Register
           </a>
         </div>
