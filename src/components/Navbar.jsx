@@ -98,30 +98,28 @@ const Navbar = () => {
 
         {user && (
           <div className="navbar-end">
-            <a className="btn px-8 bg-[#B7410e] border-none text-white">
-              Logout
-            </a>
-            <div className="dropdown dropdown-end">
+            
+            <div className="dropdown dropdown-end mr-5">
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div className="w-10 rounded-full">
+                <div title={user?.displayName} className="w-10 rounded-full">
                   <img
+                  referrerPolicy="no-referrer"
                     alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src={user?.photoURL}
                   />
                 </div>
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm bg-orange-500 dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
               >
                 <li>
                   <a className="justify-between">
                     Profile
-                    <span className="badge">New</span>
                   </a>
                 </li>
                 <li>
@@ -132,6 +130,10 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
+
+            <a className="btn px-8 bg-[#B7410e] border-none text-white">
+              Logout
+            </a>
           </div>
         )}
       </div>
