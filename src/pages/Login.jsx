@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -10,10 +11,10 @@ const Login = () => {
                 <title>DineEase | Login</title>
             </Helmet>
             <Navbar></Navbar>
-            <section class="bg-white ">
+            <section className="bg-white ">
     <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form class="w-full max-w-md">
-            <h1 class="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl ">sign In</h1>
+            <h1 class="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl ">Login</h1>
 
             <div class="relative flex items-center mt-8">
                 <span class="absolute">
@@ -22,10 +23,10 @@ const Login = () => {
                     </svg>
                 </span>
 
-                <input type="email" class="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
+                <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
             </div>
 
-            <div class="relative flex items-center mt-4">
+            <div className="relative flex items-center mt-4">
                 <span class="absolute">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-3 text-gray-300 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -40,7 +41,7 @@ const Login = () => {
                     Sign in
                 </button>
 
-                <p class="mt-4 text-center text-gray-600 dark:text-gray-400">or sign in with</p>
+                <p class="mt-4 text-center text-gray-600">or sign in with</p>
 
                 <a href="#" class="flex items-center justify-center px-6 py-3 mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg  hover:bg-gray-50">
                     <svg class="w-6 h-6 mx-2" viewBox="0 0 40 40">
@@ -50,13 +51,13 @@ const Login = () => {
                         <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2" />
                     </svg>
 
-                    <span class="mx-2">Sign in with Google</span>
+                    <span class="mx-2">Login with Google</span>
                 </a>
 
                 <div class="mt-6 text-center ">
-                    <a href="#" class="text-sm text-blue-500 hover:underline dark:text-blue-400">
-                        Don’t have an account yet? Sign up
-                    </a>
+                    <Link to='/register' class="text-sm text-blue-500 hover:underline">
+                        Don’t have an account yet? Register
+                    </Link>
                 </div>
             </div>
         </form>

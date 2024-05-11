@@ -12,6 +12,7 @@ import Gallery from './pages/Gallery.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login></Login>,
+  },
+  {
+    path: "/register",
+    element: <Register></Register>,
   },
 ]);
 
