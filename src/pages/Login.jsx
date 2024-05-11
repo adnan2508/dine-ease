@@ -11,7 +11,7 @@ const Login = () => {
                 <title>DineEase | Login</title>
             </Helmet>
             <Navbar></Navbar>
-            <section className="bg-white ">
+            <section className="bg-white font-mulish">
     <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form class="w-full max-w-md">
             <h1 class="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl ">Login</h1>
