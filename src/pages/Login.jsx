@@ -1,9 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     return (
         <div>
-            
+            <Helmet>
+                <title>DineEase | Login</title>
+            </Helmet>
             <section class="bg-white ">
     <div class="container flex items-center justify-center min-h-screen px-6 mx-auto">
         <form class="w-full max-w-md">
