@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Register = () => {
     return (
-        <div className='flex justify-center items-center min-h-[calc(100vh-306px)]'>
+        <>
+        <Navbar></Navbar>
+        <div className='flex justify-center items-center min-h-[calc(100vh-668px)]'>
       <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
-          <div className='flex justify-center mx-auto'>
-            <img
-              className='w-auto h-7 sm:h-8'
-              src='https://merakiui.com/images/logo.svg'
-              alt=''
-            />
-          </div>
 
           <p className='mt-3 text-xl text-center text-gray-600 '>
             Get Your Free Account Now.
@@ -40,7 +36,7 @@ const Register = () => {
               </svg>
             </div>
 
-            <span className='w-5/6 px-4 py-3 font-bold text-center'>
+            <span className='w-5/6 px-4 py-3 font-mulish font-bold text-center'>
               Sign in with Google
             </span>
           </div>
@@ -150,6 +146,7 @@ const Register = () => {
         ></div>
       </div>
     </div>
+    </>
     );
 };
 
