@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   return (
     <div>
       <div className="navbar bg-orange-500 text-white font-mulish">
@@ -131,7 +131,9 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <a className="btn px-8 bg-[#B7410e] border-none text-white">
+            <a
+            onClick={logOut} 
+            className="btn px-8 bg-[#B7410e] border-none text-white">
               Logout
             </a>
           </div>
