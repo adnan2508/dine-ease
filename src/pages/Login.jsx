@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Login = () => {
     return (
@@ -61,6 +62,7 @@ const Login = () => {
         </form>
     </div>
 </section>
+<Footer></Footer>
 </div>
     );
 };
