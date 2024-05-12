@@ -1,19 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet';
+import { AuthContext } from '../provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const {user, setUser, createUser, signInWithGoogle, updateUserProfile} = useContext(AuthContext);
+
+  const handleRegister = async e => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    console.log(name, email, photo, password);
+
+    try{
+      const result = await createUser(email,password);
+      await updateUserProfile(name, photo)
+      setUser({...user, photoURL: photo, displayName: name})
+      navigate('/');
+      toast.success("User Created Successfully!");
+    } catch(err) {
+      console.log(err);
+      toast.error(err?.message);
+    }
+  }
+
     return (
         <>
         <Helmet><title>DineEase | Register</title></Helmet>
         <Navbar></Navbar>
+
         <div className='flex justify-center font-mulish my-8 items-center min-h-[calc(100vh-668px)]'>
       <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
             <h2 className='font-mulish text-2xl font-bold'>Register</h2>
-          <form>
+          
+          <form onSubmit={handleRegister}>
             <div className='mt-4'>
               <label
                 className='block mb-2 text-sm font-medium text-gray-600 '
@@ -22,8 +50,8 @@ const Register = () => {
                 Username
               </label>
               <input
-                id='name'
-                autoComplete='name'
+                // id='name'
+                // autoComplete='name'
                 name='name'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
@@ -37,8 +65,8 @@ const Register = () => {
                 Photo URL
               </label>
               <input
-                id='photo'
-                autoComplete='photo'
+                // id='photo'
+                // autoComplete='photo'
                 name='photo'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
@@ -52,8 +80,8 @@ const Register = () => {
                 Email Address
               </label>
               <input
-                id='LoggingEmailAddress'
-                autoComplete='email'
+                // id='LoggingEmailAddress'
+                // autoComplete='email'
                 name='email'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='email'
@@ -71,8 +99,8 @@ const Register = () => {
               </div>
 
               <input
-                id='loggingPassword'
-                autoComplete='current-password'
+                // id='loggingPassword'
+                // autoComplete='current-password'
                 name='password'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='password'
