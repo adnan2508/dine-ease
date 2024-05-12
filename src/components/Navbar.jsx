@@ -105,7 +105,7 @@ const Navbar = () => {
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
               >
-                <div title={user?.displayName} className="w-10 rounded-full">
+                <div title={user?.displayName} className="w-16 rounded-full">
                   <img
                   referrerPolicy="no-referrer"
                     alt="Tailwind CSS Navbar component"
@@ -118,15 +118,15 @@ const Navbar = () => {
                 className="menu menu-sm bg-orange-500 dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                  </a>
+                  <Link to="/myAddedFoods">
+                  My added food items
+                  </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/addFood">Add a food item</Link>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <Link to="/orderedFoods">My ordered food items</Link>
                 </li>
               </ul>
             </div>
