@@ -118,7 +118,7 @@ const Navbar = () => {
                 className="menu menu-sm bg-orange-500 dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
               >
                 <li>
-                  <Link to="/myAddedFoods">
+                  <Link to="/myAddedFood">
                   My added food items
                   </Link>
                 </li>

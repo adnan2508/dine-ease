@@ -17,6 +17,7 @@ import { Toaster } from 'react-hot-toast';
 import AddFood from './pages/AddFood.jsx';
 import FoodDetails from './pages/FoodDetails.jsx';
 import FoodPurchase from './pages/FoodPurchase.jsx';
+import MyAddedFood from './pages/MyAddedFood.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "/addFood",
     element: <AddFood></AddFood>,
+  },
+  {
+    path: "/myAddedFood",
+    element: <MyAddedFood></MyAddedFood>,
   },
 ]);
 
