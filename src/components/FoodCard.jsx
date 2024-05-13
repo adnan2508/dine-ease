@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FoodCard = ({ foods }) => {
     const truncatedDescription = foods.description.split(" ").slice(0, 25).join(" ");
@@ -19,7 +20,9 @@ const FoodCard = ({ foods }) => {
           <p className="font-semibold text-xl">Quantity: {foods.quantity}</p>
           <p>{truncatedDescription}</p>
           <div className="card-actions justify-end">
+            <Link to={`/food/${foods._id}`}>
             <button className="btn bg-orange-500 hover:bg-orange-700 text-white">View Details</button>
+            </Link>
           </div>
         </div>
       </div>
