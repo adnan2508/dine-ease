@@ -10,7 +10,6 @@ import { useLoaderData } from "react-router-dom";
 
 const FoodPurchase = () => {
     const food = useLoaderData();
-    console.log(food);
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
 //   const timeElapsed = Date.now();
@@ -21,7 +20,8 @@ const FoodPurchase = () => {
     const form = e.target;
     const foodName = form.food_name.value;
     const price = parseFloat(form.price.value);
-    const quantity = form.quantity.value;
+    const quantity = parseFloat(form.quantity.value);
+    if(quantity > food.quantity || quantity==0) return toast.error('Item not available')
     const name = form.name.value;
     const email = form.email.value;
     const date = startDate;
