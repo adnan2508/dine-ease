@@ -14,6 +14,7 @@ import AuthProvider from './provider/AuthProvider.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import { Toaster } from 'react-hot-toast';
+import AddFood from './pages/AddFood.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "/addFood",
+    element: <AddFood></AddFood>,
   },
 ]);
 
