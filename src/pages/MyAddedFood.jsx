@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
 
 const MyAddedFood = () => {
+  const { user } = useContext(AuthContext);
+  const [foods, setFoods] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+          const { data } = await axios(
+            `${import.meta.env.VITE_API_URL}foods?email=${user?.email}`
+          );
+          setFoods(data);
+      }
+    getData()
+  }, [user]);
+
+  console.log(foods);
+
   return (
     <div>
       <Helmet>
@@ -12,10 +30,10 @@ const MyAddedFood = () => {
       <Navbar />
       <section className="container px-4 mx-auto pt-12">
         <div className="flex items-center gap-x-3">
-          <h2 className="text-lg font-medium text-gray-800 ">My Posted Jobs</h2>
+          <h2 className="text-lg font-medium text-gray-800 ">My Added Food</h2>
 
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-            05 Jobs
+           {foods.length} Foods
           </span>
         </div>
 
@@ -31,7 +49,7 @@ const MyAddedFood = () => {
                         className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
                       >
                         <div className="flex items-center gap-x-3">
-                          <span>Title</span>
+                          <span>Food Name</span>
                         </div>
                       </th>
 
@@ -39,7 +57,7 @@ const MyAddedFood = () => {
                         scope="col"
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
                       >
-                        <span>Deadline</span>
+                        <span>Date</span>
                       </th>
 
                       <th
@@ -47,7 +65,7 @@ const MyAddedFood = () => {
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
                       >
                         <button className="flex items-center gap-x-2">
-                          <span>Price Range</span>
+                          <span>Price</span>
                         </button>
                       </th>
 
