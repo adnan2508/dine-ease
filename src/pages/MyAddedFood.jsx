@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const MyAddedFood = () => {
   const { user } = useContext(AuthContext);
@@ -139,6 +140,7 @@ const MyAddedFood = () => {
                             </svg>
                           </button> */}
 
+                          <Link to='/updateFood'>
                           <button className="text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -155,6 +157,7 @@ const MyAddedFood = () => {
                               />
                             </svg>
                           </button>
+                          </Link>
                         </div>
                       </td>
                     </tr>
