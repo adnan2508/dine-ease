@@ -124,9 +124,9 @@ const AddFood = () => {
                   id="category"
                   className="border p-2 rounded-md"
                 >
-                  <option value="Web Development">Fast Food</option>
-                  <option value="Graphics Design">Fruits</option>
-                  <option value="Digital Marketing">Juice</option>
+                  <option value="Fast Food">Fast Food</option>
+                  <option value="Fruits">Fruits</option>
+                  <option value="Juice">Juice</option>
                 </select>
               </div>
               <div>
