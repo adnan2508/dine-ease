@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const FoodDetails = () => {
+    const food = useLoaderData();
+    const {user} = useContext(AuthContext);
   return (
     <div>
       <Helmet>
-        <title>DineEase | </title>
+        <title>{food.foodName} Details</title>
       </Helmet>
       <Navbar></Navbar>
       <div className="w-11/12 mx-auto mt-8">
       <div className="card card-side bg-base-100 shadow-xl">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-            alt="Food"
+            src={food.foodImage}
+            alt={food.foodName}
+            className=""
           />
         </figure>
 
         <div className="card-body">
-          <h2 className="card-title">New movie is released!</h2>
-          <p>Click the button to watch on Jetflix app.</p>
+          <h2 className="card-title font-bold text-3xl">{food.foodName}</h2>
+          <p className="mt-8 text-lg font-normal">Category: {food.category}</p>
+          <p className="text-lg font-normal">Price: ${food.price}</p>
+          <p className="text-lg font-normal">Origin: {food.foodOrigin}</p>
+          <p className="mt-4 text-lg font-normal">{food.description}</p>
           <div className="card-actions justify-end">
             <button className="btn bg-orange-500 text-white hover:bg-orange-700">Purchase</button>
           </div>
