@@ -52,7 +52,7 @@ const AddFood = () => {
             <title>DineEase | Add Item</title>
             </Helmet>
         <Navbar></Navbar>
-      <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
+      <div className="flex justify-center items-center min-h-[calc(100vh-668px)] my-12">
         <section className="p-2 md:p-6 mx-auto bg-white rounded-md shadow-md ">
           <h2 className="text-2xl font-bold text-gray-700 capitalize ">
             Add a Food Item
