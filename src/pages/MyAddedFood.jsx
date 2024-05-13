@@ -28,6 +28,7 @@ const MyAddedFood = () => {
         <title>DineEase | My Added Foods</title>
       </Helmet>
       <Navbar />
+      <div className="w-11/12 mx-auto">
       <section className="container px-4 mx-auto pt-12">
         <div className="flex items-center gap-x-3">
           <h2 className="text-lg font-medium text-gray-800 ">My Added Food</h2>
@@ -51,13 +52,6 @@ const MyAddedFood = () => {
                         <div className="flex items-center gap-x-3">
                           <span>Food Name</span>
                         </div>
-                      </th>
-
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                      >
-                        <span>Date</span>
                       </th>
 
                       <th
@@ -88,17 +82,15 @@ const MyAddedFood = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 ">
-                    <tr>
+                    {
+                        foods.map(food => (
+                            <tr key={food._id}>
                       <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                        Build Dynamic Website
+                        {food.foodName}
                       </td>
 
                       <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                        10/04/2024
-                      </td>
-
-                      <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                        $100-$200
+                        ${food.price}
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-2">
@@ -106,7 +98,7 @@ const MyAddedFood = () => {
                             className="px-3 py-1 rounded-full text-blue-500 bg-blue-100/60
                            text-xs"
                           >
-                            Web Development
+                            {food.category}
                           </p>
                         </div>
                       </td>
@@ -114,8 +106,8 @@ const MyAddedFood = () => {
                         title=""
                         className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"
                       >
-                        Lorem ipsum, dolor si adipisicing elit. Ex, provident?..
-                      </td>
+                    {food.description.substring(0,100)}....                      
+                    </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
                           <button className="text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none">
@@ -154,6 +146,8 @@ const MyAddedFood = () => {
                         </div>
                       </td>
                     </tr>
+                        ))
+                    }
                   </tbody>
                 </table>
               </div>
@@ -161,6 +155,8 @@ const MyAddedFood = () => {
           </div>
         </div>
       </section>
+      </div>
+      
       <Footer />
     </div>
   );
