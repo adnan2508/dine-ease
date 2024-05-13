@@ -3,9 +3,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateFood = () => {
     const {user} = useContext(AuthContext);
+    const food = useLoaderData();
+    console.log(food);
   return (
     <div>
         <Helmet><title>DineEase | Update Food</title></Helmet>

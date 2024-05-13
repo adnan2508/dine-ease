@@ -140,7 +140,7 @@ const MyAddedFood = () => {
                             </svg>
                           </button> */}
 
-                          <Link to='/updateFood'>
+                          <Link to={`/foods/${food._id}`}>
                           <button className="text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
