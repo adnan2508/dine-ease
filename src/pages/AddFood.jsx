@@ -3,9 +3,49 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from "react-helmet";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const AddFood = () => {
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleAddItem = async e => {
+        e.preventDefault();
+        const form = e.target;
+        const foodName = form.food_name.value;
+        const foodImage =  form.food_image.value;
+        const quantity = form.quantity.value;
+        const email = form.email.value;
+        const category = form.category.value;
+        const foodOrigin = form.food_origin.value;
+        const price = form.price.value;
+        const description = form.description.value;
+        const foodData = {
+            foodName,
+            foodImage,
+            quantity,
+            email,
+            category,
+            foodOrigin,
+            price,
+            description,
+            admin:{
+                email,
+                name:user?.displayName,
+                photo: user?.photoURL
+            },
+        }
+        try{
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}foods`, foodData);
+            console.log(data);
+            toast.success("Item Added successfully!")
+            navigate('/allFoods');
+        } catch (err) {
+            console.log(err)
+        }
+    }
   return (
     <div>
         <Helmet>
@@ -18,7 +58,7 @@ const AddFood = () => {
             Add a Food Item
           </h2>
 
-          <form>
+          <form onSubmit={handleAddItem}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
                 <label className="text-gray-700 " htmlFor="food_name">
@@ -45,12 +85,12 @@ const AddFood = () => {
               </div>
 
               <div>
-                <label className="text-gray-700 " htmlFor="food_image">
+                <label className="text-gray-700 " htmlFor="quantity">
                   Quantity
                 </label>
                 <input
-                  id="food_category"
-                  name="food_category"
+                  id="quantity"
+                  name="quantity"
                   type="text"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
@@ -127,7 +167,7 @@ const AddFood = () => {
               <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-orange-500 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-600">
                 Add Item
               </button>
-            </div>
+            </div> 
           </form>
         </section>
       </div>
