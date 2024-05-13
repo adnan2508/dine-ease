@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const FoodDetails = () => {
     const food = useLoaderData();
+    console.log(food);
     const {user} = useContext(AuthContext);
   return (
     <div>
@@ -27,10 +28,11 @@ const FoodDetails = () => {
           <h2 className="card-title font-bold text-3xl">{food.foodName}</h2>
           <p className="mt-8 text-lg font-normal">Category: {food.category}</p>
           <p className="text-lg font-normal">Price: ${food.price}</p>
+          <p className="text-lg font-normal">Add By: {food.admin.name}</p>
           <p className="text-lg font-normal">Origin: {food.foodOrigin}</p>
           <p className="mt-4 text-lg font-normal">{food.description}</p>
           <div className="card-actions justify-end">
-            <button className="btn bg-orange-500 text-white hover:bg-orange-700">Purchase</button>
+            <Link to='/foodPurchase' className="btn bg-orange-500 text-white hover:bg-orange-700">Purchase</Link>
           </div>
         </div>
 

@@ -16,6 +16,7 @@ import Register from './pages/Register.jsx';
 import { Toaster } from 'react-hot-toast';
 import AddFood from './pages/AddFood.jsx';
 import FoodDetails from './pages/FoodDetails.jsx';
+import FoodPurchase from './pages/FoodPurchase.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
     path: "/food/:id",
     element: <FoodDetails></FoodDetails>,
     loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}food/${params.id}`),
+  },
+  {
+    path: "/foodPurchase",
+    element: <FoodPurchase></FoodPurchase>,
+    // loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}food/${params.id}`),
   },
   {
     path: "/gallery",
