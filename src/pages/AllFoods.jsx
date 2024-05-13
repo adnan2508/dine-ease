@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import FoodCard from "../components/FoodCard";
 
 const AllFoods = () => {
   const allFoods = useLoaderData();
@@ -28,6 +29,12 @@ const AllFoods = () => {
               <h1 className="mb-5 text-5xl font-bold text-white">All Foods</h1>
             </div>
           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5"> 
+          {
+            allFoods.map(foods => <FoodCard key={foods._id} foods={foods}></FoodCard>)
+          }
         </div>
       </div>
       <Footer></Footer>
