@@ -35,7 +35,7 @@ const router = createBrowserRouter([
   {
     path: "/food/:id",
     element: <FoodDetails></FoodDetails>,
-    loader: () => fetch(`${import.meta.env.VITE_API_URL}foods`),
+    loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}food/${params.id}`),
   },
   {
     path: "/gallery",
