@@ -4,11 +4,12 @@ import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
+import OurLocation from "../components/OurLocation";
 
 const Home = () => {
   const topFoods = useLoaderData();
   console.log(topFoods);
-  
+
   return (
     <div>
       <Helmet>
@@ -20,9 +21,17 @@ const Home = () => {
         <Banner></Banner>
 
         <div className="flex justify-center items-center">
-          <Link to="/allFoods" className="btn my-5 bg-orange-500 text-white font-mulish rounded-3xl px-8 hover:bg-orange-700">
+          <Link
+            to="/allFoods"
+            className="btn my-5 bg-orange-500 text-white font-mulish rounded-3xl px-8 hover:bg-orange-700"
+          >
             See All
           </Link>
+        </div>
+
+        <div className="w-11/12 mx-auto my-5 font-mulish">
+          <h2 className="text-3xl font-semibold text-center">Our Locations</h2>
+          <OurLocation />
         </div>
       </div>
 
