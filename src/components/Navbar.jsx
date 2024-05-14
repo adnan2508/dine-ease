@@ -67,22 +67,6 @@ const Navbar = () => {
             <li>
               <Link to="/gallery">Gallery</Link>
             </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-orange-500">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
           </ul>
         </div>
         {!user && (

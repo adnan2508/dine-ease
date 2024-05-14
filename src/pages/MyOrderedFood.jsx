@@ -12,7 +12,7 @@ const MyOrderedFood = () => {
   useEffect(() => {
     getData();
   }, []);
-  
+
   const getData = async () => {
     const { data } = await axios(
       `${import.meta.env.VITE_API_URL}purchase?email=${user?.email}`
@@ -82,6 +82,13 @@ const MyOrderedFood = () => {
                           scope="col"
                           className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
                         >
+                          Quantity
+                        </th>
+
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                        >
                           Added By
                         </th>
 
@@ -104,6 +111,9 @@ const MyOrderedFood = () => {
 
                           <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                             ${order.price}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                            {order.quantity}
                           </td>
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
                             <div className="flex items-center gap-x-2">
