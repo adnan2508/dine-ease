@@ -21,6 +21,9 @@ const Home = () => {
       <div className="w-11/12 mx-auto mt-5">
         <Banner></Banner>
 
+        {/* Top foods section */}
+        
+
         <div className="flex justify-center items-center">
           <Link
             to="/allFoods"

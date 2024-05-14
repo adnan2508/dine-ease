@@ -25,8 +25,10 @@ const FoodPurchase = () => {
     const foodName = form.food_name.value;
     const price = parseFloat(form.price.value);
     const quantity = parseFloat(form.quantity.value);
+    if(food?.quantity == 0) 
+      return toast.error('Item is not available')
     if (quantity > food.quantity || quantity == 0)
-      return toast.error("Item is not available");
+      return toast.error("Can't buy more than availability");
     const name = form.name.value;
     const email = form.email.value;
     const date = startDate;
@@ -166,8 +168,14 @@ const FoodPurchase = () => {
             <div className="flex justify-end mt-6">
               <button
                 type="submit"
-                className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-600"
-              >
+                // className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-orange-500 rounded-md hover:bg-orange-700 focus:outline-none focus:bg-orange-600"
+                className={`px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform rounded-md focus:outline-none ${
+                  food?.quantity == 0
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-orange-500 hover:bg-orange-700 focus:bg-orange-600'
+                }`}
+                disabled={food?.quantity == 0}
+                >
                 Purchase
               </button>
             </div>

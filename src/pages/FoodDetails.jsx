@@ -3,10 +3,15 @@ import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const FoodDetails = () => {
     const food = useLoaderData();
     const {user} = useContext(AuthContext);
+    const handleItem = e => {
+      if(food?.quantity == 0)
+        return toast.error("Item is not available");
+    }
   return (
     <div>
       <Helmet>
@@ -32,7 +37,9 @@ const FoodDetails = () => {
           <p className="text-lg font-normal">Origin: {food.foodOrigin}</p>
           <p className="mt-4 text-lg font-normal">{food.description}</p>
           <div className="card-actions justify-end">
-            <Link to={`/foodPurchase/${food._id}`} className="btn bg-orange-500 text-white hover:bg-orange-700">Purchase</Link>
+            <Link 
+            onClick={handleItem}
+            to={`/foodPurchase/${food._id}`} className="btn bg-orange-500 text-white hover:bg-orange-700">Purchase</Link>
           </div>
         </div>
 
