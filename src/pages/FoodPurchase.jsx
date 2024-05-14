@@ -6,48 +6,60 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const FoodPurchase = () => {
-    const food = useLoaderData();
+  const navigate = useNavigate();
+  const food = useLoaderData();
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
-//   const timeElapsed = Date.now();
-//   const today = new Date(timeElapsed);
-  
-  const handlePurchase = async e => {
+  //   const timeElapsed = Date.now();
+  //   const today = new Date(timeElapsed);
+
+  const handlePurchase = async (e) => {
     e.preventDefault();
+    if(user?.email === food.admin?.email)
+      return toast.error("Action not permitted")
     const form = e.target;
     const foodName = form.food_name.value;
     const price = parseFloat(form.price.value);
     const quantity = parseFloat(form.quantity.value);
-    if(quantity > food.quantity || quantity==0) return toast.error('Item not available')
+    if (quantity > food.quantity || quantity == 0)
+      return toast.error("Item is not available");
     const name = form.name.value;
     const email = form.email.value;
     const date = startDate;
-    const status = 'pending' 
-    
-    const purchaseData = {
-        foodName, 
-        price, 
-        quantity, 
-        name, 
-        email, 
-        date, 
-        status
-    }
-    try{
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}purchase`, purchaseData)
-        console.log(data);
-        toast.success('Purchase complete');
-    } catch(err) {
-        console.log(err);
-    }
-  }
+    const status = "pending";
 
+    const purchaseData = {
+      foodName,
+      price,
+      quantity,
+      name,
+      email,
+      admin_email: food.admin?.email,
+      date,
+      status,
+    };
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}purchase`,
+        purchaseData
+      );
+      console.log(data);
+      toast.success("Purchase complete");
+      navigate('/myOrderedFood');
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
+      <Helmet>
+        <title>DineEase | {food.foodName} Purchase</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="w-11/12 mx-auto my-8 font-mulish">
         <section className="p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px]">
@@ -143,8 +155,11 @@ const FoodPurchase = () => {
                 //   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 /> */}
                 {/* Date Picker Input Field */}
-                <DatePicker className="border-2 p-2 rounded-md"
-                selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker
+                  className="border-2 p-2 rounded-md"
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                />
               </div>
             </div>
 
