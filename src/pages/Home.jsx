@@ -5,6 +5,7 @@ import Banner from "../components/Banner";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import OurLocation from "../components/OurLocation";
+import OurService from "../components/OurService";
 
 const Home = () => {
   const topFoods = useLoaderData();
@@ -33,6 +34,7 @@ const Home = () => {
           <h2 className="text-3xl font-semibold text-center">Our Locations</h2>
           <OurLocation />
         </div>
+        <OurService/>
       </div>
 
       <Footer></Footer>
