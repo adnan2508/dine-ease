@@ -2,20 +2,22 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const from = location.state || '/';
 
   // Google Sign In
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
       toast.success("Login Successful");
-      navigate("/");
+      navigate(from, {replace: true});
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
@@ -32,7 +34,7 @@ const Login = () => {
     try{
         const result = await signIn(email, password);
         console.log(result);
-        navigate('/');
+        navigate(from, {replace: true});
         toast.success("Login Successful");
     } catch(err) {
         console.log(err);
