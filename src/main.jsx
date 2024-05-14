@@ -20,6 +20,7 @@ import FoodPurchase from './pages/FoodPurchase.jsx';
 import MyAddedFood from './pages/MyAddedFood.jsx';
 import UpdateFood from './pages/UpdateFood.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsx';
+import MyOrderedFood from './pages/MyOrderedFood.jsx';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
     path: "/foods/:id",
     element: <PrivateRoute><UpdateFood/></PrivateRoute>,
     loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}food/${params.id}`),
+  },
+  {
+    path: "/myOrderedFood",
+    element: <PrivateRoute><MyOrderedFood></MyOrderedFood></PrivateRoute>,
   },
 ]);
 

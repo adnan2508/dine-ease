@@ -12,16 +12,15 @@ const MyAddedFood = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getData = async () => {
-          const { data } = await axios(
-            `${import.meta.env.VITE_API_URL}foods?email=${user?.email}`
-          );
-          setFoods(data);
-      }
     getData()
   }, [user]);
 
-  console.log(foods);
+  const getData = async () => {
+    const { data } = await axios(
+      `${import.meta.env.VITE_API_URL}foods?email=${user?.email}`
+    );
+    setFoods(data);
+};
 
   return (
     <div>
