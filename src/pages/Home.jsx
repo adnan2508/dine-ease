@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
@@ -6,10 +6,12 @@ import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import OurLocation from "../components/OurLocation";
 import OurService from "../components/OurService";
+import AllFoods from "./AllFoods";
+import TopFoods from "../components/TopFoods";
 
 const Home = () => {
   const topFoods = useLoaderData();
-  console.log(topFoods);
+  const [length, setLength] = useState(6);
 
   return (
     <div>
@@ -22,7 +24,12 @@ const Home = () => {
         <Banner></Banner>
 
         {/* Top foods section */}
-        
+        <h2 className="my-5 text-center font-mulish font-bold text-3xl">Top Foods</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {topFoods.slice(0, length).map((foods) => (
+            <TopFoods key={foods._id} foods={foods}></TopFoods>
+          ))}
+        </div>
 
         <div className="flex justify-center items-center">
           <Link
@@ -37,7 +44,7 @@ const Home = () => {
           <h2 className="text-3xl font-semibold text-center">Our Locations</h2>
           <OurLocation />
         </div>
-        <OurService/>
+        <OurService />
       </div>
 
       <Footer></Footer>
