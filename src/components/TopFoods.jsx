@@ -32,9 +32,9 @@ const TopFoods = ({ foods }) => {
             </h3>
 
           <Link to={`/food/${foods._id}`}
-            className="btn bg-orange-500 hover:bg-orange-700 group mt-4 inline-flex items-center gap-1 text-sm font-medium text-white"
+            className="btn px-8 bg-orange-500 hover:bg-orange-700 group mt-4 inline-flex items-center gap-1 text-sm font-medium text-white"
           >
-            Find out more
+            Details
           </Link>
         </div>
       </article>

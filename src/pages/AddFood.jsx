@@ -36,6 +36,7 @@ const AddFood = () => {
                 name:user?.displayName,
                 photo: user?.photoURL
             },
+            purchase_count: 0,
         }
         try{
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}foods`, foodData);
