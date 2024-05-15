@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../provider/AuthProvider';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Register = () => {
   const location = useLocation();
@@ -24,7 +25,14 @@ const Register = () => {
     try{
       const result = await createUser(email,password);
       await updateUserProfile(name, photo)
-      setUser({...user, photoURL: photo, displayName: name})
+      setUser({...result?.user, photoURL: photo, displayName: name})
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}jwt`, 
+      {
+        email: result?.user?.email,
+      },
+      { withCredentials: true}
+    )
+      console.log(data);
       navigate(from, {replace: true});
       toast.success("User Created Successfully!");
     } catch(err) {
