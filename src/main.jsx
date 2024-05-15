@@ -49,7 +49,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/gallery",
-    element: <Gallery></Gallery>,
+    element: <PrivateRoute><Gallery></Gallery></PrivateRoute>,
+    loader: () => fetch(`${import.meta.env.VITE_API_URL}gallery`),
   },
   {
     path: "/login",

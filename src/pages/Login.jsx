@@ -11,27 +11,26 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { signIn, signInWithGoogle, user, loading } = useContext(AuthContext);
-  useEffect(() => {
-    if (user) {
-      navigate("/");
+  useEffect(()=>{
+    if(user) {
+      navigate('/')
     }
-  }, [navigate, user]);
-  const from = location.state || "/";
+  },[navigate, user])
+  const from = location.state || '/';
 
   // Google Sign In
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithGoogle();
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}jwt`,
-        {
-          email: result?.user?.email,
-        },
-        { withCredentials: true }
-      );
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}jwt`, 
+      {
+        email: result?.user?.email,
+      },
+      { withCredentials: true}
+    )
       console.log(data);
       toast.success("Login Successful");
-      navigate(from, { replace: true });
+      navigate(from, {replace: true});
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
@@ -43,27 +42,26 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
+    console.log({email, password})
 
-    try {
-      const result = await signIn(email, password);
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}jwt`,
-        {
-          email: result?.user?.email,
-        },
-        { withCredentials: true }
-      );
+    try{
+        const result = await signIn(email, password);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}jwt`, 
+      {
+        email: result?.user?.email,
+      },
+      { withCredentials: true}
+    )
       console.log(data);
-      navigate(from, { replace: true });
-      toast.success("Login Successful");
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.message);
+        navigate(from, {replace: true});
+        toast.success("Login Successful");
+    } catch(err) {
+        console.log(err);
+        toast.error(err?.message);
     }
   };
 
-  if (user || loading) return;
+  if (user || loading) return
   return (
     <div>
       <Helmet>
