@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
   const location = useLocation();
@@ -20,7 +21,11 @@ const Login = () => {
   // Google Sign In
   const handleGoogleLogin = async () => {
     try {
-      await signInWithGoogle();
+      const result = await signInWithGoogle();
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}jwt`, {
+        email: result?.user?.email,
+      })
+      console.log(data);
       toast.success("Login Successful");
       navigate(from, {replace: true});
     } catch (err) {
