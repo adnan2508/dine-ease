@@ -13,4 +13,9 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - Responsive Design: Experience a seamless browsing experience across devices, whether it's a desktop, tablet, or mobile phone.
 
 ### Technologies used:
-- It's a Full stack project using the MERN stack. I used HTML, CSS, Tailwind, React for the frontend part. And for the backend part I used Node & Express.
+- React.js: For building the user interface and creating reusable components.
+- Express.js: For handling the backend server and API routes.
+- MongoDB: As the database for storing user and tourist spot information.
+- Node.js: For server-side scripting and handling backend logic.
+- Cors: For enabling Cross-Origin Resource Sharing to allow the frontend to communicate with the backend.
+- Helmet: For managing the document head in React applications, ensuring proper SEO.
