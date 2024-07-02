@@ -12,4 +12,5 @@ This template provides a minimal setup to get React working in Vite with HMR and
 - User Authentication: Register and login securely to access personalized features like adding food items and viewing order history.
 - Responsive Design: Experience a seamless browsing experience across devices, whether it's a desktop, tablet, or mobile phone.
 
-It's a Full stack project using the MERN stack. I used HTML, CSS, Tailwind, React for the frontend part. And for the backend part I used Node & Express.
+### Technologies used:
+- It's a Full stack project using the MERN stack. I used HTML, CSS, Tailwind, React for the frontend part. And for the backend part I used Node & Express.
